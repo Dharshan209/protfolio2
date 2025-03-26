@@ -1,5 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Moon, Sun, Github, Linkedin, Mail, ExternalLink, Trophy, Award, Star, Medal, Phone, Briefcase, BookOpen, Code, ChevronRight, Menu, X } from 'lucide-react';
+import {
+  personalInfo,
+  aboutInfo,
+  experiences,
+  educations,
+  achievements,
+  programmingSkills,
+  toolsAndTechnologies,
+  coreCompetencies,
+  projects,
+  contactInfo,
+  navLinks
+} from './data';
 
 // Define theme types
 type Theme = 'light' | 'dark';
@@ -63,65 +76,37 @@ function App() {
     }
   };
 
+  // Helper function to get the appropriate icon component
+  const getIconComponent = (iconName: string) => {
+    switch (iconName) {
+      case 'Trophy': return <Trophy className="text-blue-600 dark:text-blue-400" size={32} />;
+      case 'Award': return <Award className="text-blue-600 dark:text-blue-400" size={32} />;
+      case 'Star': return <Star className="text-blue-600 dark:text-blue-400" size={32} />;
+      case 'Medal': return <Medal className="text-blue-600 dark:text-blue-400" size={32} />;
+      default: return <Trophy className="text-blue-600 dark:text-blue-400" size={32} />;
+    }
+  };
+
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'dark:bg-gray-900 dark:text-white' : 'bg-white text-gray-900'} transition-colors duration-300`}>
       {/* Header/Navigation */}
       <header className="fixed w-full top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-gray-900/90 border-b border-gray-200 dark:border-gray-800 shadow-sm">
         <nav className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <a href="#" onClick={() => scrollToSection('home')} className="text-xl font-bold text-blue-600 dark:text-blue-400 transition-all hover:scale-105">Dharshan Senthil</a>
+            <a href="#" onClick={() => scrollToSection('home')} className="text-xl font-bold text-blue-600 dark:text-blue-400 transition-all hover:scale-105">{personalInfo.name}</a>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              <a 
-                href="#about" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} 
-                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === 'about' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-              >
-                About
-              </a>
-              <a 
-                href="#experience" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('experience'); }} 
-                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === 'experience' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-              >
-                Experience
-              </a>
-              <a 
-                href="#education" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('education'); }} 
-                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === 'education' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-              >
-                Education
-              </a>
-              <a 
-                href="#achievements" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('achievements'); }} 
-                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === 'achievements' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-              >
-                Achievements
-              </a>
-              <a 
-                href="#skills" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} 
-                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === 'skills' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-              >
-                Skills
-              </a>
-              <a 
-                href="#projects" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} 
-                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === 'projects' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-              >
-                Projects
-              </a>
-              <a 
-                href="#contact" 
-                onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} 
-                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === 'contact' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-              >
-                Contact
-              </a>
+              {navLinks.map(link => (
+                <a 
+                  key={link.id}
+                  href={`#${link.id}`} 
+                  onClick={(e) => { e.preventDefault(); scrollToSection(link.id); }} 
+                  className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${activeSection === link.id ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
+                >
+                  {link.label}
+                </a>
+              ))}
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -154,55 +139,16 @@ function App() {
           {mobileMenuOpen && (
             <div className="md:hidden absolute left-0 right-0 top-16 bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-800 z-50">
               <div className="flex flex-col py-4">
-                <a 
-                  href="#about" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} 
-                  className={`px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 ${activeSection === 'about' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-                >
-                  About
-                </a>
-                <a 
-                  href="#experience" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('experience'); }} 
-                  className={`px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 ${activeSection === 'experience' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-                >
-                  Experience
-                </a>
-                <a 
-                  href="#education" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('education'); }} 
-                  className={`px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 ${activeSection === 'education' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-                >
-                  Education
-                </a>
-                <a 
-                  href="#achievements" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('achievements'); }} 
-                  className={`px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 ${activeSection === 'achievements' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-                >
-                  Achievements
-                </a>
-                <a 
-                  href="#skills" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} 
-                  className={`px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 ${activeSection === 'skills' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-                >
-                  Skills
-                </a>
-                <a 
-                  href="#projects" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} 
-                  className={`px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 ${activeSection === 'projects' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-                >
-                  Projects
-                </a>
-                <a 
-                  href="#contact" 
-                  onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} 
-                  className={`px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 ${activeSection === 'contact' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
-                >
-                  Contact
-                </a>
+                {navLinks.map(link => (
+                  <a 
+                    key={link.id}
+                    href={`#${link.id}`} 
+                    onClick={(e) => { e.preventDefault(); scrollToSection(link.id); }} 
+                    className={`px-6 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 ${activeSection === link.id ? 'text-blue-600 dark:text-blue-400 font-medium' : ''}`}
+                  >
+                    {link.label}
+                  </a>
+                ))}
               </div>
             </div>
           )}
@@ -214,24 +160,24 @@ function App() {
         <div className="container mx-auto">
           <div className="max-w-3xl">
             <div className="inline-block px-3 py-1 mb-6 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 font-medium text-sm animate-fade-in">
-              Frontend Development Engineer Intern
+              {personalInfo.title}
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in leading-tight">
-              Hi, I'm <span className="text-blue-600 dark:text-blue-400">Dharshan Senthil</span> 👋
+              Hi, I'm <span className="text-blue-600 dark:text-blue-400">{personalInfo.name}</span> 👋
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 animate-fade-in-delay leading-relaxed">
-              Innovative software engineering student with a strong foundation in problem-solving, algorithms, and data structures. Building efficient and scalable solutions to enhance customer experiences.
+              {personalInfo.description}
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in-delay-2">
               <a
-                href="tel:+919345450064"
+                href={personalInfo.socialLinks.phone}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition-colors"
               >
                 <Phone size={18} />
                 Contact Me
               </a>
               <a
-                href="https://dharshan209.github.io/protfolio/"
+                href={personalInfo.portfolioLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-lg border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
@@ -241,14 +187,14 @@ function App() {
               </a>
               <div className="flex items-center gap-4 ml-2">
                 <a
-                  href="mailto:dharshansenthil209@gmail.com"
+                  href={personalInfo.socialLinks.email}
                   className="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
                   aria-label="Email"
                 >
                   <Mail size={20} />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/dharshan-senthil-2a1622225/"
+                  href={personalInfo.socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
@@ -257,7 +203,7 @@ function App() {
                   <Linkedin size={20} />
                 </a>
                 <a
-                  href="http://github.com/dharshan209/"
+                  href={personalInfo.socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
@@ -292,17 +238,16 @@ function App() {
               />
             </div>
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">Software Engineering Student</h3>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                I'm an innovative software engineering student with a strong foundation in problem-solving, algorithms, and data structures. My journey in tech has equipped me with expertise in Java, JavaScript, ReactJS, and NodeJS, allowing me to develop full-stack web applications and integrate cutting-edge AI technologies.
-              </p>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-                Passionate about creating efficient and scalable solutions, I strive to enhance customer experiences through intuitive design and robust functionality. When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community.
-              </p>
+              <h3 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">{aboutInfo.title}</h3>
+              {aboutInfo.paragraphs.map((paragraph, index) => (
+                <p key={index} className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
               <div className="flex flex-wrap gap-3">
-                <div className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-700 dark:text-gray-300">Problem Solving</div>
-                <div className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-700 dark:text-gray-300">Full Stack Development</div>
-                <div className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-700 dark:text-gray-300">AI Integration</div>
+                {aboutInfo.keywords.map((keyword, index) => (
+                  <div key={index} className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-700 dark:text-gray-300">{keyword}</div>
+                ))}
               </div>
             </div>
           </div>
@@ -321,41 +266,33 @@ function App() {
           </div>
           
           <div className="max-w-3xl mx-auto">
-            <div className="relative pl-8 border-l-2 border-blue-200 dark:border-blue-800">
-              <div className="absolute left-0 top-0 w-8 h-8 -translate-x-1/2 rounded-full bg-blue-600 dark:bg-blue-400 flex items-center justify-center">
-                <Briefcase className="text-white" size={16} />
-              </div>
-              
-              <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 mb-8 ml-4 transform transition-all hover:-translate-y-1 hover:shadow-xl">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">SDE Intern</h3>
-                    <p className="text-lg">Automotive Robotics India Pvt Ltd., Chennai</p>
-                  </div>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm whitespace-nowrap">
-                    Sep 2023 - Nov 2023
-                  </span>
+            {experiences.map((experience, index) => (
+              <div key={index} className="relative pl-8 border-l-2 border-blue-200 dark:border-blue-800">
+                <div className="absolute left-0 top-0 w-8 h-8 -translate-x-1/2 rounded-full bg-blue-600 dark:bg-blue-400 flex items-center justify-center">
+                  <Briefcase className="text-white" size={16} />
                 </div>
-                <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Developed AR-AI application prototype for Smart Worker project using Unity 3D</span>
-                  </li>
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Collaborated with cross-functional team to integrate AR and AI technologies</span>
-                  </li>
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Optimized application performance, reducing load time by 25%</span>
-                  </li>
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Received commendation for quick learning and efficient adaptation to company standards</span>
-                  </li>
-                </ul>
+                
+                <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 mb-8 ml-4 transform transition-all hover:-translate-y-1 hover:shadow-xl">
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">{experience.role}</h3>
+                      <p className="text-lg">{experience.company}</p>
+                    </div>
+                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm whitespace-nowrap">
+                      {experience.period}
+                    </span>
+                  </div>
+                  <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                    {experience.achievements.map((achievement, achievementIndex) => (
+                      <li key={achievementIndex} className="flex items-start">
+                        <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -373,47 +310,30 @@ function App() {
           
           <div className="max-w-3xl mx-auto">
             <div className="relative pl-8 border-l-2 border-blue-200 dark:border-blue-800">
-              <div className="absolute left-0 top-0 w-8 h-8 -translate-x-1/2 rounded-full bg-blue-600 dark:bg-blue-400 flex items-center justify-center">
-                <BookOpen className="text-white" size={16} />
-              </div>
-              
-              <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg shadow-lg p-6 mb-12 ml-4 transform transition-all hover:-translate-y-1 hover:shadow-xl">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">B.Tech: Computer Science and Business Systems</h3>
-                    <p className="text-lg">Sri Krishna College of Engineering and Technology, Coimbatore</p>
+              {educations.map((education, index) => (
+                <React.Fragment key={index}>
+                  <div className={`absolute left-0 top-${index === 0 ? '0' : '[108px]'} w-8 h-8 -translate-x-1/2 rounded-full bg-blue-600 dark:bg-blue-400 flex items-center justify-center`}>
+                    <BookOpen className="text-white" size={16} />
                   </div>
-                  <div className="flex flex-col items-end">
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm whitespace-nowrap">
-                      Nov 2021 - Present
-                    </span>
-                    <div className="mt-2 px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">
-                      CGPA: 7.82
+                  
+                  <div className={`bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg shadow-lg p-6 ${index === 0 ? 'mb-12' : ''} ml-4 transform transition-all hover:-translate-y-1 hover:shadow-xl`}>
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">{education.degree}</h3>
+                        <p className="text-lg">{education.institution}</p>
+                      </div>
+                      <div className="flex flex-col items-end">
+                        <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm whitespace-nowrap">
+                          {education.period}
+                        </span>
+                        <div className="mt-2 px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">
+                          {education.score.label}: {education.score.value}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              
-              <div className="absolute left-0 top-[108px] w-8 h-8 -translate-x-1/2 rounded-full bg-blue-600 dark:bg-blue-400 flex items-center justify-center">
-                <BookOpen className="text-white" size={16} />
-              </div>
-              
-              <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-lg shadow-lg p-6 ml-4 transform transition-all hover:-translate-y-1 hover:shadow-xl">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">Higher Secondary</h3>
-                    <p className="text-lg">Vidhya Vikas Boys Matrix Higher Secondary School, Thanjavur</p>
-                  </div>
-                  <div className="flex flex-col items-end">
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm whitespace-nowrap">
-                      June 2017 - Mar 2019
-                    </span>
-                    <div className="mt-2 px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm">
-                      Score: 79.5
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </React.Fragment>
+              ))}
             </div>
           </div>
         </div>
@@ -431,38 +351,18 @@ function App() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-              <div className="h-20 bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900"></div>
-              <div className="-mt-10 px-6 pb-6">
-                <div className="flex items-center justify-center w-20 h-20 mx-auto bg-white dark:bg-gray-900 rounded-full shadow-lg border-4 border-white dark:border-gray-900 group-hover:scale-110 transition-transform duration-300">
-                  <Trophy className="text-blue-600 dark:text-blue-400" size={32} />
+            {achievements.map((achievement, index) => (
+              <div key={index} className="group bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                <div className="h-20 bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900"></div>
+                <div className="-mt-10 px-6 pb-6">
+                  <div className="flex items-center justify-center w-20 h-20 mx-auto bg-white dark:bg-gray-900 rounded-full shadow-lg border-4 border-white dark:border-gray-900 group-hover:scale-110 transition-transform duration-300">
+                    {getIconComponent(achievement.icon)}
+                  </div>
+                  <h3 className="text-xl font-bold mt-4 mb-2 text-center">{achievement.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-center">{achievement.description}</p>
                 </div>
-                <h3 className="text-xl font-bold mt-4 mb-2 text-center">Cubethon 23 Kochi</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-center">Achieved Second Runner-up position, displaying exceptional skills and dedication</p>
               </div>
-            </div>
-
-            <div className="group bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-              <div className="h-20 bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900"></div>
-              <div className="-mt-10 px-6 pb-6">
-                <div className="flex items-center justify-center w-20 h-20 mx-auto bg-white dark:bg-gray-900 rounded-full shadow-lg border-4 border-white dark:border-gray-900 group-hover:scale-110 transition-transform duration-300">
-                  <Award className="text-blue-600 dark:text-blue-400" size={32} />
-                </div>
-                <h3 className="text-xl font-bold mt-4 mb-2 text-center">Riggathon 22 Coimbatore</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-center">Ranked in the top 10 teams, demonstrating excellence in the competition</p>
-              </div>
-            </div>
-
-            <div className="group bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-              <div className="h-20 bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-700 dark:to-blue-900"></div>
-              <div className="-mt-10 px-6 pb-6">
-                <div className="flex items-center justify-center w-20 h-20 mx-auto bg-white dark:bg-gray-900 rounded-full shadow-lg border-4 border-white dark:border-gray-900 group-hover:scale-110 transition-transform duration-300">
-                  <Star className="text-blue-600 dark:text-blue-400" size={32} />
-                </div>
-                <h3 className="text-xl font-bold mt-4 mb-2 text-center">Hack-AI-thon 23 Coimbatore</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-center">Advanced to the finals, showcasing strong performance</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -482,12 +382,7 @@ function App() {
             <div>
               <h3 className="text-xl font-bold mb-6 pl-4 border-l-4 border-blue-600 dark:border-blue-400">Programming Languages</h3>
               <div className="grid grid-cols-2 gap-4">
-                {[
-                  { name: 'Java', level: 90 },
-                  { name: 'JavaScript', level: 85 },
-                  { name: 'ReactJS', level: 80 },
-                  { name: 'NodeJS', level: 75 }
-                ].map((skill) => (
+                {programmingSkills.map((skill) => (
                   <div key={skill.name} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <div className="flex justify-between items-center mb-2">
                       <p className="font-medium">{skill.name}</p>
@@ -507,12 +402,7 @@ function App() {
             <div>
               <h3 className="text-xl font-bold mb-6 pl-4 border-l-4 border-blue-600 dark:border-blue-400">Tools & Technologies</h3>
               <div className="grid grid-cols-2 gap-4">
-                {[
-                  { name: 'Git', level: 85 },
-                  { name: 'Redux', level: 80 },
-                  { name: 'Unity', level: 75 },
-                  { name: 'MySQL', level: 70 }
-                ].map((skill) => (
+                {toolsAndTechnologies.map((skill) => (
                   <div key={skill.name} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <div className="flex justify-between items-center mb-2">
                       <p className="font-medium">{skill.name}</p>
@@ -533,15 +423,9 @@ function App() {
           <div className="mt-16">
             <h3 className="text-xl font-bold mb-6 pl-4 border-l-4 border-blue-600 dark:border-blue-400">Core Competencies</h3>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-              {[
-                'Object Oriented Programming',
-                'Data Structures & Algorithms',
-                'Problem Solving',
-                'Analytical Skills',
-                'Communication Skills'
-              ].map((skill) => (
+              {coreCompetencies.map((skill, index) => (
                 <div
-                  key={skill}
+                  key={index}
                   className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all hover:-translate-y-1 text-center"
                 >
                   <div className="w-12 h-12 mx-auto mb-3 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
@@ -567,95 +451,47 @@ function App() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="group bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all">
-              <div className="h-48 bg-gradient-to-br from-blue-400 to-blue-600 dark:from-blue-600 dark:to-blue-800 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-0 transition-opacity"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-2xl font-bold text-white">TAP — Turn Art into Pages</h3>
+            {projects.map((project, index) => (
+              <div key={index} className="group bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all">
+                <div className={`h-48 bg-gradient-to-br ${project.colorGradient} relative overflow-hidden`}>
+                  <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-0 transition-opacity"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <h3 className="text-2xl font-bold text-white">{project.title}</h3>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className={`px-3 py-1 ${project.colorGradient.includes('purple') ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200' : 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200'} rounded-full text-sm`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <ul className="mb-6 text-gray-600 dark:text-gray-400 space-y-2">
+                    {project.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start">
+                        <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 px-4 py-2 ${project.colorGradient.includes('purple') ? 'bg-purple-600 hover:bg-purple-700' : 'bg-blue-600 hover:bg-blue-700'} text-white rounded-lg transition-colors`}
+                  >
+                    {project.linkText} <ExternalLink size={16} />
+                  </a>
                 </div>
               </div>
-              <div className="p-6">
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  A full-stack web platform for generating AI-personalized storybooks from user-uploaded images.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {['ReactJS', 'NodeJS', 'Express', 'MySQL'].map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <ul className="mb-6 text-gray-600 dark:text-gray-400 space-y-2">
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Implemented features including image upload, product system with shopping cart</span>
-                  </li>
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Integrated Razorpay payment system</span>
-                  </li>
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Built an admin panel for efficient order management and tracking</span>
-                  </li>
-                </ul>
-                <a
-                  href="http://WWW.tapyourstory.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  View Project <ExternalLink size={16} />
-                </a>
-              </div>
-            </div>
-
-            <div className="group bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all">
-              <div className="h-48 bg-gradient-to-br from-purple-400 to-blue-600 dark:from-purple-600 dark:to-blue-800 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black opacity-30 group-hover:opacity-0 transition-opacity"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <h3 className="text-2xl font-bold text-white">BUBBA — An AI-Augmented Reality companion</h3>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  An AR mental health support app with personalized interactions.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {['Unity 3D', 'TensorFlow', 'NLP'].map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <ul className="mb-6 text-gray-600 dark:text-gray-400 space-y-2">
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Designed 3D avatars with real-time emotion recognition</span>
-                  </li>
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Enhanced user engagement and app interactivity</span>
-                  </li>
-                  <li className="flex items-start">
-                    <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                    <span>Achieved 85% positive user feedback on app effectiveness</span>
-                  </li>
-                </ul>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
-                >
-                  Project Details <ExternalLink size={16} />
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -675,23 +511,23 @@ function App() {
             <div className="md:col-span-2 bg-blue-50 dark:bg-gray-800 p-8 rounded-lg">
               <h3 className="text-2xl font-bold mb-6 text-blue-600 dark:text-blue-400">Contact Information</h3>
               <div className="space-y-6">
-                <a href="tel:+919345450064" className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 group">
+                <a href={`tel:${contactInfo.phone}`} className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 group">
                   <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center group-hover:bg-blue-200 dark:group-hover:bg-blue-800 transition-colors">
                     <Phone className="text-blue-600 dark:text-blue-400" size={20} />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Phone</p>
-                    <p className="font-medium">+91 9345450064</p>
+                    <p className="font-medium">{contactInfo.phone}</p>
                   </div>
                 </a>
                 
-                <a href="mailto:dharshansenthil209@gmail.com" className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 group">
+                <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 group">
                   <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center group-hover:bg-blue-200 dark:group-hover:bg-blue-800 transition-colors">
                     <Mail className="text-blue-600 dark:text-blue-400" size={20} />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Email</p>
-                    <p className="font-medium">dharshansenthil209@gmail.com</p>
+                    <p className="font-medium">{contactInfo.email}</p>
                   </div>
                 </a>
                 
@@ -699,7 +535,7 @@ function App() {
                   <p className="text-lg mb-4">Connect with me on social media:</p>
                   <div className="flex gap-4">
                     <a
-                      href="https://www.linkedin.com/in/dharshan-senthil-2a1622225/"
+                      href={contactInfo.socialLinks.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
@@ -708,7 +544,7 @@ function App() {
                       <Linkedin size={20} />
                     </a>
                     <a
-                      href="http://github.com/dharshan209/"
+                      href={contactInfo.socialLinks.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
@@ -717,7 +553,7 @@ function App() {
                       <Github size={20} />
                     </a>
                     <a
-                      href="https://dharshan209.github.io/protfolio/"
+                      href={contactInfo.socialLinks.portfolio}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
@@ -789,34 +625,34 @@ function App() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
               <a href="#" onClick={() => scrollToSection('home')} className="text-xl font-bold text-blue-400 hover:text-blue-300 transition-colors">
-                Dharshan Senthil
+                {personalInfo.name}
               </a>
               <p className="mt-2 text-gray-400">
-                Frontend Development Engineer Intern
+                {personalInfo.title}
               </p>
             </div>
             
             <div className="flex flex-col items-center md:items-end">
               <p className="text-gray-400 mb-4">
-                © 2025 Dharshan Senthil. All rights reserved.
+                © 2025 {personalInfo.name}. All rights reserved.
               </p>
               <div className="flex gap-4">
                 <a
-                  href="tel:+919345450064"
+                  href={personalInfo.socialLinks.phone}
                   className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500 transition-colors"
                   aria-label="Phone"
                 >
                   <Phone size={18} />
                 </a>
                 <a
-                  href="mailto:dharshansenthil209@gmail.com"
+                  href={personalInfo.socialLinks.email}
                   className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500 transition-colors"
                   aria-label="Email"
                 >
                   <Mail size={18} />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/dharshan-senthil-2a1622225/"
+                  href={personalInfo.socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500 transition-colors"
@@ -825,7 +661,7 @@ function App() {
                   <Linkedin size={18} />
                 </a>
                 <a
-                  href="http://github.com/dharshan209/"
+                  href={personalInfo.socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-blue-500 transition-colors"
