@@ -217,85 +217,46 @@ function App() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section ref={sectionRefs.current.about} id="about" className="py-24 px-6 bg-white dark:bg-gray-900">
-        <div className="container mx-auto">
-          <div className="flex flex-col items-center mb-16">
-            <div className="inline-block px-3 py-1 mb-3 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 font-medium text-sm">
-              About Me
+     {/* About Section */}
+<section ref={sectionRefs.current.about} id="about" className="py-24 px-6 bg-white dark:bg-gray-900">
+  <div className="container mx-auto">
+    <div className="flex flex-col items-center mb-16">
+      <div className="inline-block px-3 py-1 mb-3 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 font-medium text-sm">
+        About Me
+      </div>
+      <h2 className="text-3xl md:text-4xl font-bold text-center">Get to Know Me</h2>
+      <div className="h-1 w-20 bg-blue-600 dark:bg-blue-400 mt-6 rounded-full"></div>
+    </div>
+    
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="relative group">
+        <div className="absolute inset-0 bg-blue-600 rounded-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300"></div>
+        <img
+          src={aboutInfo.profileImage || "/assets/profile-placeholder.jpg"}
+          alt="Dharshan Senthil"
+          className="relative rounded-lg shadow-lg transform group-hover:scale-105 transition-all duration-300 z-10"
+        />
+      </div>
+      
+      <div>
+        <h3 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">{aboutInfo.title}</h3>
+        {aboutInfo.paragraphs.map((paragraph, index) => (
+          <p key={index} className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+            {paragraph}
+          </p>
+        ))}
+        
+        <div className="flex flex-wrap gap-3">
+          {aboutInfo.keywords.map((keyword, index) => (
+            <div key={index} className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-700 dark:text-gray-300">
+              {keyword}
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-center">Get to Know Me</h2>
-            <div className="h-1 w-20 bg-blue-600 dark:bg-blue-400 mt-6 rounded-full"></div>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-blue-600 rounded-lg transform rotate-3 group-hover:rotate-0 transition-transform duration-300"></div>
-              <img
-                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                alt="Coding workspace"
-                className="relative rounded-lg shadow-lg transform group-hover:scale-105 transition-all duration-300 z-10"
-              />
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">{aboutInfo.title}</h3>
-              {aboutInfo.paragraphs.map((paragraph, index) => (
-                <p key={index} className="text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  {paragraph}
-                </p>
-              ))}
-              <div className="flex flex-wrap gap-3">
-                {aboutInfo.keywords.map((keyword, index) => (
-                  <div key={index} className="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-700 dark:text-gray-300">{keyword}</div>
-                ))}
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
-
-      {/* Work Experience Section */}
-      <section ref={sectionRefs.current.experience} id="experience" className="py-24 px-6 bg-gray-50 dark:bg-gray-800">
-        <div className="container mx-auto">
-          <div className="flex flex-col items-center mb-16">
-            <div className="inline-block px-3 py-1 mb-3 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 font-medium text-sm">
-              Experience
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-center">Work Experience</h2>
-            <div className="h-1 w-20 bg-blue-600 dark:bg-blue-400 mt-6 rounded-full"></div>
-          </div>
-          
-          <div className="max-w-3xl mx-auto">
-            {experiences.map((experience, index) => (
-              <div key={index} className="relative pl-8 border-l-2 border-blue-200 dark:border-blue-800">
-                <div className="absolute left-0 top-0 w-8 h-8 -translate-x-1/2 rounded-full bg-blue-600 dark:bg-blue-400 flex items-center justify-center">
-                  <Briefcase className="text-white" size={16} />
-                </div>
-                
-                <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 mb-8 ml-4 transform transition-all hover:-translate-y-1 hover:shadow-xl">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">{experience.role}</h3>
-                      <p className="text-lg">{experience.company}</p>
-                    </div>
-                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm whitespace-nowrap">
-                      {experience.period}
-                    </span>
-                  </div>
-                  <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                    {experience.achievements.map((achievement, achievementIndex) => (
-                      <li key={achievementIndex} className="flex items-start">
-                        <ChevronRight className="flex-shrink-0 mt-1 text-blue-600 dark:text-blue-400" size={16} />
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Education Section */}
       <section ref={sectionRefs.current.education} id="education" className="py-24 px-6 bg-white dark:bg-gray-900">
