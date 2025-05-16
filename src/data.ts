@@ -164,14 +164,14 @@ export const toolsAndTechnologies: Skill[] = [
   { name: 'Unity 3D', level: 70 },
 ];
 
-export const coreCompetencies = [
-  'Full-Stack Development',
-  'Object-Oriented Programming (OOP)',
-  'Data Structures & Algorithms (DSA)',
-  'REST API Development',
-  'Agile & Collaborative Development',
-  'Problem Solving & Debugging',
-  'Version Control (Git)'
+export const coreCompetencies: CoreCompetency[] = [
+  { name: 'Full-Stack Development', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'Object-Oriented Programming (OOP)', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+  { name: 'Data Structures & Algorithms (DSA)', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+  { name: 'REST API Development', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'Agile & Collaborative Development', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg' },
+  { name: 'Problem Solving & Debugging', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+  { name: 'Version Control (Git)', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' }
 ];
 
 // Projects Data
