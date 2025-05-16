@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useScrollSpy } from './hooks/useScrollSpy';
 import { ThemeProvider, useTheme } from './providers/ThemeProvider';
 
@@ -6,6 +6,10 @@ import { ThemeProvider, useTheme } from './providers/ThemeProvider';
 import Navigation from './components/layout/Navigation';
 import HeroSection from './components/sections/HeroSection';
 import AboutSection from './components/sections/AboutSection';
+import SkillsSection from './components/sections/SkillsSection';
+import ProjectsSection from './components/sections/ProjectsSection';
+import ContactSection from './components/sections/ContactSection';
+import Footer from './components/layout/Footer';
 import CustomCursor from './components/ui/CustomCursor';
 import Background3D from './components/ui/Background3D';
 
@@ -81,11 +85,31 @@ function AppContent() {
       <section ref={sectionRefs.current.about}>
         <AboutSection aboutInfo={aboutInfo} />
       </section>
-
-      {/* More sections will be added here */}
-      <div className="h-screen flex items-center justify-center">
-        <p className="text-2xl font-medium">More sections coming soon!</p>
-      </div>
+      
+      {/* Skills Section */}
+      <section ref={sectionRefs.current.skills}>
+        <SkillsSection 
+          programmingSkills={programmingSkills}
+          toolsAndTechnologies={toolsAndTechnologies}
+          coreCompetencies={coreCompetencies}
+        />
+      </section>
+      
+      {/* Projects Section */}
+      <section ref={sectionRefs.current.projects}>
+        <ProjectsSection projects={projects} />
+      </section>
+      
+      {/* Contact Section */}
+      <section ref={sectionRefs.current.contact}>
+        <ContactSection contactInfo={contactInfo} />
+      </section>
+      
+      {/* Footer */}
+      <Footer
+        personalInfo={personalInfo}
+        scrollToSection={scrollToSection}
+      />
     </div>
   );
 }
