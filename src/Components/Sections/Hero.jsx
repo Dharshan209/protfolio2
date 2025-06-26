@@ -102,7 +102,7 @@ const Hero = ({ onNavigate }) => {
             <div className="relative group">
               <div className="w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200 dark:border-gray-700 group-hover:border-yellow-400 transition-all duration-500 group-hover:shadow-yellow-400/20">
                 <img
-                  src="src/assets/profile.jpeg"
+                  src="public/profile.jpeg"
                   alt="Dharshan Senthil - Full Stack Developer"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 />
