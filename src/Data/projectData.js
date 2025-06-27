@@ -1,10 +1,10 @@
 export const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with React, Node.js, and Firebase",
-    detailedDescription: "A feature-rich e-commerce platform built from the ground up. It includes user authentication, product catalog, shopping cart, and a secure checkout process. The back-end is powered by Node.js and Express, with a MongoDB database for storing product and user data. The front-end is a responsive single-page application built with React.",
-    image: "src/assets/Tap-WebSite.png",
+    title: "TAP – Personalized E-Commerce Platform",
+    description: "AI-powered gift shop platform for custom storybooks",
+    detailedDescription: "A full-stack platform where users upload images to generate personalized storybooks using AI. Includes image handling with Firebase Storage, Firestore-based order management, Razorpay integration, and a full admin dashboard.",
+    image: "/Tap-WebSite.png",
     technologies: ["React", "Node.js", "Firebase", "Express"],
     demoLink: "https://tap-main.vercel.app/",
     codeLink: "https://github.com/Dharshan209/tap-main",
@@ -14,139 +14,139 @@ export const projects = [
       uptime: "99.9%"
     },
     features: [
-      "User Authentication & Authorization",
-      "Product Catalog with Search",
-      "Shopping Cart & Checkout",
-      "Payment Integration",
-      "Admin Dashboard",
-      "Real-time Inventory Management"
+      "Image Upload and Processing",
+      "Custom Storybook Generation",
+      "Firebase & Razorpay Integration",
+      "Admin Panel for Order Management",
+      "Authentication & Secure Checkout",
+      "Real-time Inventory Updates"
     ],
-    challenges: "Optimizing database queries for large product catalogs and implementing secure payment processing.",
-    impact: "Reduced checkout time by 40% and increased conversion rate by 25%."
+    challenges: "Managing large media files and optimizing image-to-book processing pipeline.",
+    impact: "Increased gift store conversion rate by 25% and reduced manual creation time by 40%."
   },
   {
     id: 2,
-    title: "AI Chat Application",
-    description: "Real-time chat app with AI integration using Socket.io and OpenAI API.",
-    detailedDescription: "This application enables real-time, bi-directional communication between users, powered by WebSockets. It also integrates the OpenAI API, allowing users to chat with an intelligent AI assistant. The interface is designed to be intuitive and user-friendly.",
-    image: "src/assets/Game-verse.png",
-    technologies: ["React", "Socket.io", "OpenAI", "Node.js"],
-    demoLink: "#",
-    codeLink: "#",
+    title: "StudyTracker – WhatsApp-Based Study Plan",
+    description: "Task scheduler with Twilio WhatsApp integration",
+    detailedDescription: "A 30-day challenge platform that helps users stick to study routines using WhatsApp reminders. Features include Firebase Firestore scheduling, daily check-ins, webhook queues, and task status analytics.",
+    image: "/StudyTracker.png",
+    technologies: ["React", "Firebase", "Twilio", "Cloud Functions"],
+    demoLink: "https://study-tracker-tan-gamma.vercel.app/",
+    codeLink: "https://github.com/Dharshan209/StudyTracker",
     metrics: {
-      messages: "10K+",
-      responseTime: "< 2s",
-      accuracy: "92%"
+      tasksCompleted: "10K+",
+      latency: "<1s",
+      engagement: "+60%"
     },
     features: [
-      "Real-time Messaging",
-      "AI-Powered Responses",
-      "Message History",
-      "User Presence Indicators",
-      "File Sharing",
-      "Custom Chat Rooms"
+      "Daily WhatsApp Reminders",
+      "Progress Tracker",
+      "Firestore Queue Handling",
+      "Real-time Scheduling",
+      "Check-in Analytics",
+      "User-Specific Study Plans"
     ],
-    challenges: "Managing WebSocket connections at scale and optimizing AI response times.",
-    impact: "Achieved 2-second average response time and 98% user satisfaction rate."
-  },
-  {
-    id: 3,
-    title: "Task Management System",
-    description: "Collaborative task management tool with real-time updates.",
-    detailedDescription: "A Kanban-style task management application designed for team collaboration. Users can create boards, lists, and cards, and drag-and-drop them to update status. Real-time updates are handled by Firebase's Firestore, ensuring all users see changes instantly. Styled with Tailwind CSS for a modern and clean UI.",
-    image: "src/assets/Fintrack.png",
-    technologies: ["React", "Firebase", "Tailwind CSS"],
-    demoLink: "#",
-    codeLink: "#",
-    metrics: {
-      teams: "50+",
-      tasks: "5K+",
-      efficiency: "+45%"
-    },
-    features: [
-      "Kanban Board Interface",
-      "Drag & Drop Functionality",
-      "Real-time Collaboration",
-      "Task Priority Levels",
-      "Team Member Assignment",
-      "Progress Analytics"
-    ],
-    challenges: "Implementing smooth drag-and-drop with real-time synchronization across multiple users.",
-    impact: "Improved team productivity by 45% and reduced project completion time by 30%."
-  },
-  {
-    id: 4,
-    title: "Portfolio Website",
-    description: "Responsive portfolio website with modern design and animations.",
-    detailedDescription: "A personal portfolio site to showcase projects and skills. It features a sleek, modern design with smooth page transitions and animations powered by Framer Motion. The site is fully responsive and optimized for all screen sizes, from mobile phones to desktop monitors.",
-    image: "https://via.placeholder.com/400x300/1f2937/yellow?text=Portfolio",
-    technologies: ["React", "Tailwind CSS", "Framer Motion"],
-    demoLink: "#",
-    codeLink: "#",
-    metrics: {
-      visitors: "500+",
-      loadTime: "< 1s",
-      mobile: "100%"
-    },
-    features: [
-      "Responsive Design",
-      "Smooth Animations",
-      "Dark/Light Mode",
-      "Interactive Elements",
-      "SEO Optimized",
-      "Contact Form Integration"
-    ],
-    challenges: "Optimizing animations for performance while maintaining visual appeal across devices.",
-    impact: "Achieved 95+ Lighthouse score and 3-second average session duration increase."
-  },
-  {
-    id: 5,
-    title: "Weather Dashboard",
-    description: "Weather forecasting app with interactive maps and charts.",
-    detailedDescription: "This dashboard fetches and displays current weather data and forecasts from a third-party Weather API. It presents the information using interactive charts created with Chart.js and includes a map view to visualize weather in different locations.",
-    image: "https://via.placeholder.com/400x300/1f2937/yellow?text=Weather+App",
-    technologies: ["React", "Chart.js", "Weather API"],
-    demoLink: "#",
-    codeLink: "#",
-    metrics: {
-      accuracy: "98%",
-      cities: "1K+",
-      requests: "100K+"
-    },
-    features: [
-      "Real-time Weather Data",
-      "5-Day Forecast",
-      "Interactive Maps",
-      "Weather Charts",
-      "Location Search",
-      "Weather Alerts"
-    ],
-    challenges: "Handling API rate limits and caching strategies for optimal performance.",
-    impact: "Reduced API costs by 60% through intelligent caching and delivered 98% accurate forecasts."
+    challenges: "Building scalable queue systems and integrating with external APIs in cloud functions.",
+    impact: "Boosted user consistency by 60% and reduced study dropout rate."
   },
   {
     id: 6,
-    title: "Social Media App",
-    description: "Social networking platform with real-time messaging.",
-    detailedDescription: "A social platform where users can create profiles, make posts, follow other users, and engage with content. A key feature is the real-time private messaging system, built using Node.js and Socket.io, with a PostgreSQL database for robust data management.",
-    image: "https://via.placeholder.com/400x300/1f2937/yellow?text=Social+Media",
-    technologies: ["React", "Node.js", "Socket.io", "PostgreSQL"],
-    demoLink: "#",
-    codeLink: "#",
+    title: "IB – Static Website for Indian Bio-Tech Company",
+    description: "Responsive corporate product showcase site",
+    detailedDescription: "A modern static site for a biological company to list their products and services. Built using React and Tailwind for a clean, responsive design with product listing, contact form, and accessible layout.",
+    image: "src/assets/IB.png",
+    technologies: ["React", "Tailwind CSS", "Vite"],
+    demoLink: "https://indianbiologicals.com",
+    codeLink: "https://github.com/Dharshan209/ib",
     metrics: {
-      users: "2K+",
-      posts: "15K+",
-      engagement: "85%"
+      performance: "98%",
+      bounceRate: "-30%",
+      visitors: "1K+"
     },
     features: [
-      "User Profiles & Authentication",
-      "Real-time Messaging",
-      "Post Creation & Sharing",
-      "Follow/Unfollow System",
-      "Like & Comment System",
-      "News Feed Algorithm"
+      "Product Showcase",
+      "Responsive Layout",
+      "Contact Form",
+      "Fast Loading via Vite",
+      "Accessible Design",
+      "Modern Navigation"
     ],
-    challenges: "Scaling real-time features and implementing efficient content delivery algorithms.",
-    impact: "Achieved 85% user engagement rate and 2K+ active monthly users within 6 months."
+    challenges: "Ensuring mobile responsiveness and low load times for rural users.",
+    impact: "Increased company web presence and improved customer inquiry rate."
+  },
+  {
+    id: 4,
+    title: "GameVerse – Real-Time Social Deduction Game",
+    description: "Multiplayer game with WebRTC-based video chat",
+    detailedDescription: "A real-time video-based game where players join rooms, receive roles, and interact in deduction rounds. Built with WebRTC for peer-to-peer video and Socket.IO for fast game-state sync.",
+    image: "/Game-verse.png",
+    technologies: ["React", "WebRTC", "Socket.IO", "Node.js"],
+    demoLink: "https://game-client-rouge.vercel.app/",
+    codeLink: "https://github.com/Dharshan209/gameverse",
+    metrics: {
+      latency: "<150ms",
+      users: "5+ concurrent",
+      uptime: "100%"
+    },
+    features: [
+      "Peer-to-Peer Video",
+      "Role Assignment",
+      "Room Creation & Sync",
+      "Real-time Gameplay",
+      "Optimized Performance",
+      "Multiplayer State Handling"
+    ],
+    challenges: "Handling cross-browser WebRTC compatibility and latency tuning.",
+    impact: "Enabled seamless gameplay across devices and reduced lag by 15%."
+  },
+  {
+    id: 5,
+    title: "FinTrack – Personal Finance Tracker with Telegram Integration",
+    description: "Telegram-powered expense tracking platform",
+    detailedDescription: "A finance dashboard with automatic Telegram-based bill parsing, built with Supabase and React. Visualizes expense data and syncs real-time across devices via message parsing logic.",
+    image: "/Fintrack.png",
+    technologies: ["React", "Supabase", "Telegram Bot API"],
+    demoLink: "https://fintrack-murex-two.vercel.app/",
+    codeLink: "https://github.com/Dharshan209/fintrack",
+    metrics: {
+      logsParsed: "2K+",
+      usage: "80% via Telegram",
+      feedback: "Highly positive"
+    },
+    features: [
+      "Telegram Message Parsing",
+      "Real-Time Sync",
+      "Dashboard Analytics",
+      "Auto Logging",
+      "Budget Visualization",
+      "Supabase Back-end"
+    ],
+    challenges: "Parsing unstructured messages and ensuring real-time update consistency.",
+    impact: "Reduced manual logging by 80% and became the top-used feature in beta."
+  },
+  {
+    id: 3,
+    title: "Bubba – AR Mental Health App",
+    description: "AR app with emotion-aware 3D avatars",
+    detailedDescription: "An augmented reality app that supports mental wellness via 3D avatars and emotion recognition. Features include a TensorFlow-powered NLP engine for user support and Unity-based AR interface.",
+    image: "/Bubba.png",
+    technologies: ["Unity 3D", "TensorFlow", "NLP"],
+    demoLink: "https://youtu.be/fU7-pMCkVDo?si=3hJ-CzvI4IbDj-S8",
+    codeLink: "#",
+    metrics: {
+      satisfaction: "85%",
+      event: "Cubethon 2023 – 2nd Runner-up",
+      ARModels: "Real-time"
+    },
+    features: [
+      "Emotion Detection",
+      "3D Avatars",
+      "NLP Chat Support",
+      "Unity-based Interface",
+      "Customizable UI",
+      "Survey Feedback System"
+    ],
+    challenges: "Real-time emotion mapping and accurate NLP response tuning.",
+    impact: "Achieved 85% satisfaction and award-winning implementation in Cubethon 2023."
   }
 ];
