@@ -11,7 +11,7 @@ export const experienceData = [
     technologies: ['Java', 'OOP', 'DSA', 'System Design']
   },
   {
-    id: 2,
+    id: 3,
     type: 'experience',
     title: 'Software Development Intern',
     organization: 'Automotive Robotics India Pvt Ltd.',
@@ -27,12 +27,12 @@ export const experienceData = [
     technologies: ['Unity 3D', 'C#']
   },
   {
-    id: 3,
+    id: 2,
     type: 'project',
     title: 'Bubba – AR Mental Health App',
     organization: 'Personal Project',
     location: 'Remote',
-    period: '2024',
+    period: '2023',
     description: 'An immersive AR mental health app combining emotion recognition and 3D avatars to provide a personalized user experience.',
     achievements: [
       'Integrated real-time NLP interaction engine with 85% satisfaction rating',
@@ -42,21 +42,6 @@ export const experienceData = [
   },
   {
     id: 4,
-    type: 'project',
-    title: 'GameVerse – Real-Time Social Deduction Game',
-    organization: 'Personal Project',
-    location: 'Remote',
-    period: '2024',
-    description: 'Built a multiplayer video-based social deduction game with real-time chat and role-based gameplay.',
-    achievements: [
-      'Built peer-to-peer video game with sub-150ms latency',
-      'Enabled seamless gameplay for up to 5 players',
-      'Reduced latency by 15% with performance optimizations'
-    ],
-    technologies: ['React', 'WebRTC', 'Socket.IO', 'Node.js', 'Express', 'Tailwind CSS']
-  },
-  {
-    id: 5,
     type: 'project',
     title: 'FinTrack – Personal Finance Tracker',
     organization: 'Personal Project',
@@ -71,7 +56,7 @@ export const experienceData = [
     technologies: ['React.js', 'Supabase', 'Telegram Bot API', 'Node.js']
   },
   {
-    id: 6,
+    id: 5,
     type: 'certification',
     title: 'Advanced React – Meta',
     organization: 'Coursera',
