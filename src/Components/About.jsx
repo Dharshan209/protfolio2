@@ -41,7 +41,7 @@ const About = () => {
             <div className="relative group">
               <div className="w-80 h-80 lg:w-96 lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-200 dark:border-gray-700 group-hover:border-yellow-400 transition-all duration-500">
                 <img
-                  src="src/assets/profile.jpeg"
+                  src="/profile.jpeg"
                   alt="Dharshan Senthil"
                   className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                 />
@@ -81,7 +81,7 @@ const About = () => {
             
             <div className="flex flex-col sm:flex-row gap-4">
              <a
-    href="public/Dharshan Senthil.pdf"
+    href="/Dharshan Senthil.pdf"
     target="_blank"
     rel="noopener noreferrer"
    >
