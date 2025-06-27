@@ -31,21 +31,6 @@ const Experience = () => {
           subtitle="My journey in software development, from education to professional experience"
         />
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, index) => (
-            <Card key={index} padding="md" className="text-center group">
-              <div className="text-3xl mb-2 group-hover:animate-bounce">{stat.icon}</div>
-              <div className="text-3xl lg:text-4xl font-bold text-yellow-400 mb-2">
-                {stat.number}
-              </div>
-              <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
-                {stat.label}
-              </div>
-            </Card>
-          ))}
-        </div>
-
         {/* Timeline */}
         <div className="relative">
           {/* Timeline line - hidden on mobile */}

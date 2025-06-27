@@ -26,29 +26,6 @@ const About = () => {
     }
   ];
 
-  const journey = [
-    {
-      year: '2020',
-      title: 'Started Computer Science',
-      description: 'Began my journey into programming with Python and Java fundamentals.'
-    },
-    {
-      year: '2022',
-      title: 'Web Development',
-      description: 'Discovered passion for web technologies, diving deep into React and Node.js.'
-    },
-    {
-      year: '2023',
-      title: 'First Internship',
-      description: 'Gained real-world experience working on production applications.'
-    },
-    {
-      year: '2024',
-      title: 'Full-Stack Focus',
-      description: 'Specialized in full-stack development with modern frameworks and cloud technologies.'
-    }
-  ];
-
   return (
     <section className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -103,12 +80,18 @@ const About = () => {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
+             <a
+    href="public/Dharshan Senthil.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+   >
               <Button variant="primary" size="lg">
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
                 Download Resume
               </Button>
+              </a>
               <Button variant="outline" size="lg">
                 View Projects
               </Button>
@@ -132,28 +115,6 @@ const About = () => {
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
                   {value.description}
-                </p>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Journey Timeline */}
-        <div>
-          <h3 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            My Journey
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {journey.map((milestone, index) => (
-              <Card key={index} padding="lg" className="text-center">
-                <div className="text-2xl font-bold text-yellow-400 mb-3">
-                  {milestone.year}
-                </div>
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                  {milestone.title}
-                </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                  {milestone.description}
                 </p>
               </Card>
             ))}
