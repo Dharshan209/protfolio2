@@ -21,7 +21,7 @@ const App = () => {
         <section id="skills" className="min-h-screen scroll-mt-20"><Skills /></section>
         <section id="experience" className="min-h-screen scroll-mt-20"><Experience /></section>
         <section id="projects" className="min-h-screen scroll-mt-20"><Projects /></section>
-        <section id="services" className="min-h-screen scroll-mt-20"><Services /></section>
+        {/* <section id="services" className="min-h-screen scroll-mt-20"><Services /></section> */}
         <section id="contact" className="min-h-screen scroll-mt-20"><Contact /></section>
         
         <Footer />

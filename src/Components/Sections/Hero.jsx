@@ -3,7 +3,7 @@ import Button from '../UI/Button';
 const Hero = ({ onNavigate }) => {
   const handleNavigation = (sectionId) => {
     if (onNavigate) {
-      onNavigate(sectionId);
+      onNavigate(`/${sectionId}`);
     }
   };
 
@@ -80,21 +80,6 @@ const Hero = ({ onNavigate }) => {
               </Button>
             </div>
 
-            {/* Quick Stats */}
-            <div className="flex items-center space-x-8 pt-8 border-t border-gray-200 dark:border-gray-800">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-yellow-400">15+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Projects</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-yellow-400">3+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Years Exp</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-yellow-400">100%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Satisfaction</div>
-              </div>
-            </div>
           </div>
 
           {/* Right Image */}
